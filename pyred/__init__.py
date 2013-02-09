@@ -1,6 +1,7 @@
 from pyramid.config import Configurator
 from pyramid_zodbconn import get_connection
 from .models import appmaker
+from .renderers.json import json_renderer
 
 
 def root_factory(request):
@@ -12,6 +13,7 @@ def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
     config = Configurator(root_factory=root_factory, settings=settings)
+    config.add_renderer('json', json_renderer)
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.scan()
     return config.make_wsgi_app()

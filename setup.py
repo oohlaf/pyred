@@ -14,6 +14,8 @@ requires = [
     'pyramid_debugtoolbar',
     'ZODB3',
     'waitress',
+    'cryptacular',
+    'repoze.folder',
     ]
 
 setup(name='PyRed',
