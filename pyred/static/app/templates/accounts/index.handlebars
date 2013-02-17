@@ -1,0 +1,8 @@
+<section>
+    <h1>List of Accounts</h1>
+    <ul>
+        {{#each account in controller}}
+        <li>{{#linkTo "account" account}}{{account.email}}{{/linkTo}}</li>
+        {{/each}}
+    </ul>
+</section>

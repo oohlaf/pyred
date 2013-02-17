@@ -1,0 +1,9 @@
+<html>
+    <head>
+        <script tal:repeat="url request.webassets_env['jsengine'].urls()" src="${url}" type="application/javascript"></script>
+        <script tal:repeat="url request.webassets_env['templates'].urls()" src="${url}" type="application/javascript"></script>
+        <script tal:repeat="url request.webassets_env['jsapp'].urls()" src="${url}" type="application/javascript"></script>
+    </head>
+    <body>
+    </body>
+</html>

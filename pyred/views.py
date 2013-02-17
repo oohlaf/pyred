@@ -17,7 +17,7 @@ def add_account(context, request):
         context=Account,
         renderer='json')
 def view_account(context, request):
-    return context
+    return {'account': context }
 
 
 @view_config(request_method='GET',
@@ -25,7 +25,7 @@ def view_account(context, request):
         renderer='json')
 def list_accounts(context, request):
     accounts = context.list_accounts()
-    return {'account': list(x[1] for x in accounts)}
+    return {'accounts': list(x[1] for x in accounts)}
 
 
 @view_config(request_method='GET',

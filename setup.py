@@ -8,6 +8,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.md')).read()
 
 requires = [
     'pyramid',
+    'pyramid_webassets',
     'pyramid_zodbconn',
     'transaction',
     'pyramid_tm',
