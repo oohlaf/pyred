@@ -2,7 +2,6 @@
  * Application
  */
 
-Ember.TEMPLATES = window.JST;
 App = Ember.Application.create({
     LOG_TRANSITIONS: true
 });
