@@ -15,6 +15,7 @@ requires = [
     'pyramid_debugtoolbar',
     'ZODB3',
     'waitress',
+    'cssmin',
     'cryptacular',
     'repoze.folder',
     ]

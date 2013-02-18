@@ -1,8 +1,21 @@
-<section>
-    <h1>List of Accounts</h1>
-    <ul>
-        {{#each account in controller}}
-        <li>{{#linkTo "account" account}}{{account.email}}{{/linkTo}}</li>
-        {{/each}}
-    </ul>
-</section>
+<div id="main" class="span9">
+    <section>
+        <h1>List of Accounts</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Default Channel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each account in controller}}
+                <tr>
+                    <td>{{#linkTo "account" account}}{{account.email}}{{/linkTo}}</td>
+                    <td>Channel Name</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </section>
+</div>

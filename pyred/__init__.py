@@ -31,9 +31,15 @@ def main(global_config, **settings):
     jsapp = Bundle('app/app.js',
             filters='rjsmin',
             output='js/app.js', debug=True)
+    css = Bundle('app/vendor/bootstrap-2.3.0/css/bootstrap.css',
+            'app/vendor/bootstrap-2.3.0/css/bootstrap-responsive.css',
+            'app/css/app.css',
+            filters='cssmin',
+            output='css/main.css', debug=True)
     config.add_webasset('jsengine', jsengine)
     config.add_webasset('templates', templates)
     config.add_webasset('jsapp', jsapp)
+    config.add_webasset('css', css)
 
     config.add_renderer('json', json_renderer)
 
