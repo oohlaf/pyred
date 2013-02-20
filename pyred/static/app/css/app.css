@@ -1,3 +1,14 @@
 body {
     padding-top: 60px;
 }
+
+.dl-horizontal dt:after {
+    content: ":";
+}
+
+/* Prevent empty descriptions to float up */
+.dl-horizontal dd:after {
+    content: ".";
+    visibility: hidden;
+    clear: left;
+}
