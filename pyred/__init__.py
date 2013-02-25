@@ -4,7 +4,7 @@ from pyramid_zodbconn import get_connection
 from pyramid_webassets import includeme, get_webassets_env
 from webassets import Bundle
 from .models import appmaker
-from .renderers.json import json_renderer
+from .renderers.renderjson import json_renderer
 
 
 def root_factory(request):
