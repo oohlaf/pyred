@@ -3,6 +3,7 @@ import cryptacular.bcrypt
 import cryptacular.pbkdf2
 import hashlib
 
+from datetime import datetime
 from persistent import Persistent
 from repoze.folder import Folder
 
@@ -29,6 +30,7 @@ class Account(Persistent):
     def __init__(self, email, password):
         self.email = email
         self.password = password
+        self.created = datetime.now()
 
     def _get_password(self):
         return self._password
@@ -40,6 +42,14 @@ class Account(Persistent):
 
     def validate_password(self, password):
         return hash_password(password) == self.password
+
+    def __repr__(self):
+        return '<%s.%s(email=%s, password=%s) object at 0x%x>' % (
+                self.__module__,
+                self.__class__.__name__,
+                self.email,
+                self.password,
+                id(self))
 
 
 class AccountService(Folder):
@@ -64,4 +74,3 @@ class AccountService(Folder):
 
     def list_accounts(self):
         return self.items()
-
