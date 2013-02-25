@@ -8,12 +8,17 @@
             </button>
             {{#linkTo index classNames="brand"}}PyRed{{/linkTo}}
             <div class="nav-collapse collapse">
-            <nav>
-                <ul class="nav">
-                    <li>{{#linkTo index}}Home{{/linkTo}}</li>
-                    <li>{{#linkTo accounts.index}}Accounts{{/linkTo}}</li>
-                </ul>
-            </nav>
+                <nav>
+                    <ul class="nav">
+                        <li>{{#linkTo index}}Home{{/linkTo}}</li>
+                        <li class="dropdown">{{#view App.NavDropdownView}}Accounts<b class="caret"></b>{{/view}}
+                            <ul class="dropdown-menu" role="menu">
+                                <li>{{#linkTo accounts.index}}List Accounts{{/linkTo}}</li>
+                                <li>{{#linkTo accounts.new}}Add Account{{/linkTo}}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

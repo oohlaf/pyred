@@ -18,6 +18,7 @@ requires = [
     'cssmin',
     'cryptacular',
     'repoze.folder',
+    'colander',
     ]
 
 setup(name='PyRed',

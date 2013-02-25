@@ -19,6 +19,7 @@ def main(global_config, **settings):
 
     includeme(config)
     jsengine = Bundle('app/vendor/jquery-1.8.2.js',
+            'app/vendor/bootstrap-2.3.0/js/bootstrap.js',
             'app/vendor/handlebars-1.0.0-rc.3.js',
             'app/vendor/ember-1.0.0-rc.1.js',
             'app/vendor/ember-data.js',

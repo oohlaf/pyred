@@ -1,0 +1,31 @@
+<section>
+    <h1>New Account</h1>
+    <form class="form-horizontal" {{action save content on="submit"}}>
+        <fieldset>
+            <div class="control-group">
+                <label class="control-label" {{bindAttr for="email"}}>Email</label>
+                <div class="controls">
+                    {{view Ember.TextField type="text" required="true" valueBinding="email" id="email"}}
+                    <span class="help-block">Enter email address</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="new_password">Password</label>
+                <div class="controls">
+                    {{view Ember.TextField type="password" required="true" valueBinding="newPassword" id="new_password"}}
+                    <span class="help-block">Enter a password</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="validate_password">Validate password</label>
+                <div class="controls">
+                    {{view Ember.TextField type="password" required="true" valueBinding="validatePassword" id="validate_password"}}
+                    <span class="help-block">Please enter the same password again</span>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+</section>

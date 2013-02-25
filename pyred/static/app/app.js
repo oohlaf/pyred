@@ -6,6 +6,8 @@ App = Ember.Application.create({
     LOG_TRANSITIONS: true
 });
 
+//Ember.LOG_BINDINGS = true;
+
 /*
  * Models
  */
@@ -15,7 +17,10 @@ App.Store = DS.Store.extend({
 });
 
 App.Account = DS.Model.extend({
-    email: DS.attr('string')
+    email: DS.attr('string'),
+    newPassword: DS.attr('string'),
+    validatePassword: DS.attr('string'),
+    created: DS.attr('date')
 });
 
 /*
@@ -25,6 +30,16 @@ App.Account = DS.Model.extend({
 /*
  * Views
  */
+
+App.NavDropdownView = Ember.View.extend({
+    classNames: ['dropdown-toggle'],
+    tagName: 'a',
+    attributeBindings: ['data-toggle'],
+    'data-toggle': 'dropdown',
+    didInsertElement: function() {
+        this.$('.dropdown-toggle').dropdown();
+    }
+});
 
 /*
  * Controllers
@@ -51,6 +66,25 @@ App.AccountsIndexRoute = Ember.Route.extend({
     },
     renderTemplate: function() {
         this.render('accounts.index', {
+            into: 'application'
+        });
+    }
+});
+
+App.AccountsNewRoute = Ember.Route.extend({
+    model: function() {
+        return App.Account.createRecord();
+    },
+    events: {
+        save: function(account) {
+            account.one('didCreate', function() {
+                this.replaceWith('accounts.index', account);
+            }, this);
+            this.get('store').commit();
+        }
+    },
+    renderTemplate: function() {
+        this.render('accounts.new', {
             into: 'application'
         });
     }

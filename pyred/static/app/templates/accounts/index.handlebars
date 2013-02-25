@@ -1,27 +1,25 @@
-<div class="span9">
-    <section>
-        <h1>List of Accounts</h1>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Registered</th>
-                    <th>Last Login</th>
-                    <th>Expires</th>
-                    <th>Default Channel</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each account in controller}}
-                <tr>
-                    <td>{{#linkTo "account" account}}{{account.email}}{{/linkTo}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Channel Name</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </section>
-</div>
+<section>
+    <h1>List of Accounts</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Registered</th>
+                <th>Last Login</th>
+                <th>Expires</th>
+                <th>Default Channel</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each account in controller}}
+            <tr>
+                <td>{{#linkTo "account" account}}{{account.email}}{{/linkTo}}</td>
+                <td>{{account.created}}</td>
+                <td></td>
+                <td></td>
+                <td>Channel Name</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
