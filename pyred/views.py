@@ -19,6 +19,18 @@ class AddAccountSchema(colander.MappingSchema):
     account = AddAccountFormSchema()
 
 
+class ValidationFailure(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+
+
+@view_config(context=ValidationFailure,
+        renderer='json')
+def failed_validation(exc, request):
+    request.response.status_int = 422
+    return exc.msg
+
+
 @view_config(request_method='POST',
         context=AccountService,
         renderer='json')
@@ -30,7 +42,7 @@ def add_account(context, request):
     except colander.Invalid, e:
         errors = e.asdict()
         log.debug('add_account errors: %s', pprint.pformat(errors))
-        return {'errors': errors}
+        raise ValidationFailure({'errors': errors})
     account = context.add_account(Account(data['account']['email'],
                                           data['account']['new_password']))
     json_map = {'account': account}
