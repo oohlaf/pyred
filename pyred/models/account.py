@@ -2,10 +2,14 @@ import cryptacular.core
 import cryptacular.bcrypt
 import cryptacular.pbkdf2
 import hashlib
+import logging
 
 from datetime import datetime
 from persistent import Persistent
 from repoze.folder import Folder
+
+
+log = logging.getLogger(__name__)
 
 
 bcrypt = cryptacular.bcrypt.BCRYPTPasswordManager()
@@ -64,6 +68,7 @@ class AccountService(Folder):
         account.__parent__ = self
         account.__name__ = key
         self[key] = account
+        log.debug('Added account %r with key %s' % (account, key))
         return account
 
     #def remove(self, account_or_key): # check using providedBy with an
