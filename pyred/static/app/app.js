@@ -73,14 +73,19 @@ App.AccountsIndexRoute = Ember.Route.extend({
 
 App.AccountsNewRoute = Ember.Route.extend({
     model: function() {
-        return App.Account.createRecord();
+        var transaction = this.get('store').transaction();
+        this.set('transaction', transaction);
+        return transaction.createRecord(App.Account, {});
+    },
+    deactivate: function() {
+        this.get('transaction').rollback();
     },
     events: {
         save: function(account) {
-            account.one('didCreate', function() {
-                this.replaceWith('accounts.index', account);
-            }, this);
-            this.get('store').commit();
+            account.one('didCreate', this, function() {
+                this.transitionTo('index');
+            });
+            account.get('transaction').commit();
         }
     },
     renderTemplate: function() {

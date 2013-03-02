@@ -2,24 +2,25 @@
     <h1>New Account</h1>
     <form class="form-horizontal" {{action save content on="submit"}}>
         <fieldset>
+            <legend>Registration Details</legend>
             <div class="control-group">
-                <label class="control-label" {{bindAttr for="email"}}>Email</label>
+                <label class="control-label" {{bindAttr for="emailField.elementId"}}>Email</label>
                 <div class="controls">
-                    {{view Ember.TextField type="text" required="true" valueBinding="email" id="email"}}
+                    {{view Ember.TextField type="text" required="true" valueBinding="email" name="email" viewName="emailField"}}
                     <span class="help-block">Enter email address</span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="new_password">Password</label>
+                <label class="control-label" {{bindAttr for="newPasswordField.elementId"}}>Password</label>
                 <div class="controls">
-                    {{view Ember.TextField type="password" required="true" valueBinding="newPassword" id="new_password"}}
+                    {{view Ember.TextField type="password" required="true" valueBinding="newPassword" name="new_password" viewName="newPasswordField"}}
                     <span class="help-block">Enter a password</span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="validate_password">Validate password</label>
+                <label class="control-label" {{bindAttr for="validatePasswordField"}}>Validate password</label>
                 <div class="controls">
-                    {{view Ember.TextField type="password" required="true" valueBinding="validatePassword" id="validate_password"}}
+                    {{view Ember.TextField type="password" required="true" valueBinding="validatePassword" name="validate_password" viewName="validatePasswordField"}}
                     <span class="help-block">Please enter the same password again</span>
                 </div>
             </div>
