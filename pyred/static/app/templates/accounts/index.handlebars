@@ -3,6 +3,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
+                <th>Name</th>
                 <th>Email</th>
                 <th>Registered</th>
                 <th>Last Login</th>
@@ -13,6 +14,7 @@
         <tbody>
             {{#each account in controller}}
             <tr>
+                <td>{{account.fullName}}</td>
                 <td>{{#linkTo "account" account}}{{account.email}}{{/linkTo}}</td>
                 <td>{{account.created}}</td>
                 <td></td>

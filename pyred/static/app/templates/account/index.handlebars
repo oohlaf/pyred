@@ -1,9 +1,13 @@
 <section>
     <h1>Account</h1>
-    <h2>{{email}}</h2>
+    <h2>{{fullName}}</h2>
     <dl class="dl-horizontal clearfix">
+        <dt>First Name</dt>
+        <dd>{{firstName}}</dt>
+        <dt>Last Name</dt>
+        <dd>{{lastName}}</dt>
         <dt>Email</dt>
-        <dd>{{email}}</dd>
+        <dd><a {{bindAttr href="mailtoEmail"}}>{{email}}</a></dd>
         <dt>Registered</dt>
         <dd>{{created}}</dd>
         <dt>Last Login</dt>
@@ -13,4 +17,8 @@
         <dt>Default Channel</dt>
         <dd>Default Channel</dd>
     </dl>
+    <div class="form-actions">
+        <button class="btn btn-primary" type="button">Edit</button>
+        <button class="btn" type="button">Delete</button>
+    </div>
 </section>

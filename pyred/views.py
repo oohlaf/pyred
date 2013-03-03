@@ -10,6 +10,8 @@ log = logging.getLogger(__name__)
 
 
 class AddAccountFormSchema(colander.MappingSchema):
+    first_name = colander.SchemaNode(colander.String())
+    last_name = colander.SchemaNode(colander.String())
     email = colander.SchemaNode(colander.String(), validator=colander.Email())
     new_password = colander.SchemaNode(colander.String())
     validate_password = colander.SchemaNode(colander.String())
@@ -43,11 +45,11 @@ def add_account(context, request):
         errors = e.asdict()
         log.debug('add_account errors: %s', pprint.pformat(errors))
         raise ValidationFailure({'errors': errors})
-    account = context.add_account(Account(data['account']['email'],
+    account = context.add_account(Account(data['account']['first_name'],
+                                          data['account']['last_name'],
+                                          data['account']['email'],
                                           data['account']['new_password']))
-    json_map = {'account': account}
-    log.debug('add_account info: %r', json_map)
-    return json_map
+    return {'account': account}
 
 
 @view_config(request_method='GET',

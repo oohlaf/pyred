@@ -1,8 +1,22 @@
 <section>
-    <h1>New Account</h1>
+    <h1>Add Account</h1>
     <form class="form-horizontal" {{action save content on="submit"}}>
         <fieldset>
             <legend>Registration Details</legend>
+            <div class="control-group">
+                <label class="control-label" {{bindAttr for="firstNameField.elementId"}}>First Name</label>
+                <div class="controls">
+                    {{view Ember.TextField type="text" required="true" valueBinding="firstName" name="first_name" viewName="firstNameField"}}
+                    <span class="help-block">Enter first name</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" {{bindAttr for="lastNameField.elementId"}}>Last Name</label>
+                <div class="controls">
+                    {{view Ember.TextField type="text" required="true" valueBinding="lastName" name="last_name" viewName="lastNameField"}}
+                    <span class="help-block">Enter last name</span>
+                </div>
+            </div>
             <div class="control-group">
                 <label class="control-label" {{bindAttr for="emailField.elementId"}}>Email</label>
                 <div class="controls">
@@ -25,7 +39,7 @@
                 </div>
             </div>
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Register</button>
             </div>
         </fieldset>
     </form>

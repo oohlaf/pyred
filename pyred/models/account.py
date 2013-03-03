@@ -31,7 +31,9 @@ class Account(Persistent):
     __name__ = None
     __parent__ = None
 
-    def __init__(self, email, password):
+    def __init__(self, first_name, last_name, email, password):
+        self.first_name = first_name
+        self.last_name = last_name
         self.email = email
         self.password = password
         self.created = datetime.now()
@@ -48,9 +50,11 @@ class Account(Persistent):
         return hash_password(password) == self.password
 
     def __repr__(self):
-        return '<%s.%s(email=%s, password=%s) object at 0x%x>' % (
+        return '<%s.%s(first_name=%s, last_name=%s, email=%s, password=%s) object at 0x%x>' % (
                 self.__module__,
                 self.__class__.__name__,
+                self.first_name,
+                self.last_name,
                 self.email,
                 self.password,
                 id(self))

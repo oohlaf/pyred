@@ -17,10 +17,19 @@ App.Store = DS.Store.extend({
 });
 
 App.Account = DS.Model.extend({
+    firstName: DS.attr('string'),
+    lastName: DS.attr('string'),
     email: DS.attr('string'),
     newPassword: DS.attr('string'),
     validatePassword: DS.attr('string'),
-    created: DS.attr('date')
+    created: DS.attr('date'),
+
+    fullName: function() {
+        return this.get('firstName') + ' ' + this.get('lastName');
+    }.property('firstName', 'lastName'),
+    mailtoEmail: function() {
+        return "mailto:" + this.get('email');
+    }.property('email')
 });
 
 /*
